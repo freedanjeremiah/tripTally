@@ -1,6 +1,7 @@
 'use client';
 
 import { RainbowKitProvider, getDefaultConfig } from '@rainbow-me/rainbowkit';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiConfig } from 'wagmi';
 import { mainnet, sepolia } from 'wagmi/chains';
 import '@rainbow-me/rainbowkit/styles.css';
@@ -12,14 +13,18 @@ const config = getDefaultConfig({
   chains: [sepolia], // Start with just Sepolia for testnet
 });
 
+const queryClient = new QueryClient();
+
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <WagmiConfig config={config}>
-      <RainbowKitProvider>
-        <UserProvider>
-          {children}
-        </UserProvider>
-      </RainbowKitProvider>
-    </WagmiConfig>
+    <QueryClientProvider client={queryClient}>
+      <WagmiConfig config={config}>
+        <RainbowKitProvider>
+          <UserProvider>
+            {children}
+          </UserProvider>
+        </RainbowKitProvider>
+      </WagmiConfig>
+    </QueryClientProvider>
   );
 }
