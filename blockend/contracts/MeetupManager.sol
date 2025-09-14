@@ -48,7 +48,10 @@ contract MeetupManager {
         require(block.timestamp < meetup.timestamp, "Meetup already started");
         require(meetup.participants.length < meetup.capacity, "Meetup full");
 
-        // check DID verification via Yellow SDK off-chain before allowing join
+        // NOTE: integration with Yellow SDK verification MUST be done off-chain
+        // and the off-chain service should call a backend signer to mint a short-lived
+        // attestation or pass an allowlist signature. DO NOT implement verification
+        // inside this contract unless the developer links to an auditable verification contract.
         meetup.participants.push(msg.sender);
         emit JoinedMeetup(_meetupId, msg.sender);
     }
