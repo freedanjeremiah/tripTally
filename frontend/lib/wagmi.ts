@@ -1,11 +1,9 @@
-// This file is kept for future contract interactions and chain configurations
-import { mainnet, sepolia } from 'wagmi/chains';
+import { getDefaultConfig } from '@rainbow-me/rainbowkit';
+import { sepolia } from 'wagmi/chains';
+import { CONTRACT_ADDRESSES } from './contracts/constants';
 
-export const supportedChains = [mainnet, sepolia];
-
-// Add contract addresses per chain
-export const contractAddresses: Record<number, string> = {
-  // Example:
-  // [mainnet.id]: '0x...', // mainnet
-  // [sepolia.id]: '0x...', // sepolia
-};
+export const config = getDefaultConfig({
+  appName: 'TripTally',
+  projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID || '',
+  chains: [sepolia],
+});

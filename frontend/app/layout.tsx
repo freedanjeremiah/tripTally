@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Providers } from "./providers";
+import ClientLayout from "./components/client-layout";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -20,16 +21,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className="antialiased">
         <Providers>
-          {children}
+          <ClientLayout>{children}</ClientLayout>
         </Providers>
       </body>
     </html>

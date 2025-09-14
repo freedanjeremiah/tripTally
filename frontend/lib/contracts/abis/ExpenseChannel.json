@@ -1,0 +1,79 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "ExpenseChannel",
+  "sourceName": "contracts/ExpenseChannel.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "channelId",
+          "type": "string"
+        }
+      ],
+      "name": "getChannel",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "id",
+              "type": "string"
+            },
+            {
+              "internalType": "address[]",
+              "name": "participants",
+              "type": "address[]"
+            },
+            {
+              "internalType": "uint256",
+              "name": "totalAmount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isSettled",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct ExpenseChannel.Channel",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "channelId",
+          "type": "string"
+        },
+        {
+          "internalType": "address[]",
+          "name": "participants",
+          "type": "address[]"
+        }
+      ],
+      "name": "createExpense",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "channelId",
+          "type": "string"
+        }
+      ],
+      "name": "settleExpense",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ]
+}

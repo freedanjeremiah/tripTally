@@ -1,0 +1,56 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "ReputationLedger",
+  "sourceName": "contracts/ReputationLedger.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "getReputation",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "score",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "totalRatings",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct ReputationLedger.Reputation",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "score",
+          "type": "uint256"
+        }
+      ],
+      "name": "rateUser",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ]
+}

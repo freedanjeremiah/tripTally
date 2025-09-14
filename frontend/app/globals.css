@@ -1,28 +1,63 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* Custom base styles */
 @layer base {
-  html {
-    --color-background: var(--background);
+  :root {
+    --background: #ffffff;
+    --foreground: #09090b;
     --color-foreground: var(--foreground);
     --font-sans: var(--font-geist-sans);
     --font-mono: var(--font-geist-mono);
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+
+  h1 {
+    @apply text-4xl font-bold;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold;
+  }
+
+  h3 {
+    @apply text-xl font-semibold;
+  }
+}
+
+@layer components {
+  .mobile-nav-link {
+    @apply flex flex-col items-center justify-center p-2;
+  }
+
+  .mobile-nav-link.active {
+    @apply text-indigo-600;
+  }
+
+  .mobile-nav-link:not(.active) {
+    @apply text-gray-500 hover:text-gray-800;
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
   }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #09090b;
+    --foreground: #fafafa;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
+  body {
+    @apply bg-gray-900 text-gray-100;
+  }
+
+  .mobile-nav-link:not(.active) {
+    @apply text-gray-400 hover:text-gray-200;
+  }
 }
